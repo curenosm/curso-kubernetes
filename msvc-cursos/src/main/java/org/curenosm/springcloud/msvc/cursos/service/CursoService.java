@@ -1,5 +1,6 @@
 package org.curenosm.springcloud.msvc.cursos.service;
 
+import org.curenosm.springcloud.msvc.cursos.model.Usuario;
 import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 
 import java.util.List;
@@ -11,4 +12,8 @@ public interface CursoService {
     Optional<Curso> buscarPorId(Long id);
     Curso guardar(Curso curso);
     void eliminar(Long id);
+
+    Optional<Usuario> asignarUsuario(Usuario usuario, Long id);
+    Optional<Usuario> crearUsuario(Usuario usuario, Long cursoId);
+    Optional<Usuario> eliminarUsuario(Usuario usuario, Long cursoId);
 }

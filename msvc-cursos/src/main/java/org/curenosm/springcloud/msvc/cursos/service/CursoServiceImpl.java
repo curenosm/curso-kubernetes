@@ -1,5 +1,7 @@
 package org.curenosm.springcloud.msvc.cursos.service;
 
+import org.curenosm.springcloud.msvc.cursos.clients.UsuarioClientRest;
+import org.curenosm.springcloud.msvc.cursos.model.Usuario;
 import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 import org.curenosm.springcloud.msvc.cursos.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ public class CursoServiceImpl implements CursoService {
 
     @Autowired
     private CursoRepository repository;
+
+    @Autowired
+    private UsuarioClientRest client;
 
     @Override
     @Transactional(readOnly = true)
@@ -37,5 +42,20 @@ public class CursoServiceImpl implements CursoService {
     @Transactional
     public void eliminar(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Usuario> asignarUsuario(Usuario usuario, Long id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Usuario> crearUsuario(Usuario usuario, Long cursoId) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Usuario> eliminarUsuario(Usuario usuario, Long cursoId) {
+        return Optional.empty();
     }
 }
