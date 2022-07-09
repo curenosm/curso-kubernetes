@@ -1,6 +1,6 @@
 package org.curenosm.springcloud.msvc.cursos.service;
 
-import org.curenosm.springcloud.msvc.cursos.entity.Curso;
+import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 import org.curenosm.springcloud.msvc.cursos.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

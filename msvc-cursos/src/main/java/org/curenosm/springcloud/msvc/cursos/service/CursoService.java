@@ -1,6 +1,6 @@
 package org.curenosm.springcloud.msvc.cursos.service;
 
-import org.curenosm.springcloud.msvc.cursos.entity.Curso;
+import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 
 import java.util.List;
 import java.util.Optional;

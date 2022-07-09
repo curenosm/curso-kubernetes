@@ -1,6 +1,6 @@
 package org.curenosm.springcloud.msvc.cursos.controller;
 
-import org.curenosm.springcloud.msvc.cursos.entity.Curso;
+import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 import org.curenosm.springcloud.msvc.cursos.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

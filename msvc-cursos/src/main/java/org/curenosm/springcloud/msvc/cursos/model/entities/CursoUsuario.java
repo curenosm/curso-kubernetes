@@ -1,4 +1,4 @@
-package org.curenosm.springcloud.msvc.cursos.entity;
+package org.curenosm.springcloud.msvc.cursos.model.entities;
 
 import javax.persistence.*;
 
