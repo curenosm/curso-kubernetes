@@ -26,7 +26,7 @@ public class CursoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> buscar(@PathVariable Long id) {
-        Optional<Curso> o = service.buscarPorId(id);
+        Optional<Curso> o = service.buscarPorIdConUsuarios(id);
 
         if (o.isPresent())
             return ResponseEntity.ok(o.get());
