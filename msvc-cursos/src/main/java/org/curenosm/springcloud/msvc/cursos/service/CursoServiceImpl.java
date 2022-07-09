@@ -70,7 +70,7 @@ public class CursoServiceImpl implements CursoService {
         Optional<Curso> o = repository.findById(cursoId);
 
         if (o.isPresent()) {
-            Usuario usuarioNuevoMsvc = client.crear(usuario);
+            Usuario usuarioNuevoMsvc = client.buscar(usuario.getId());
 
             Curso curso = o.get();
             CursoUsuario cursoUsuario = new CursoUsuario();
