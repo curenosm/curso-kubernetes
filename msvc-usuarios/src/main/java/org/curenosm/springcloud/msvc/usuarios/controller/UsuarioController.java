@@ -79,8 +79,6 @@ public class UsuarioController {
                     .body(service.guardar(usuarioDb));
         }
 
-
-
         return ResponseEntity.notFound().build();
     }
 
@@ -95,6 +93,11 @@ public class UsuarioController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/usuarios-curso")
+    public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam List<Long> ids) {
+        return ResponseEntity.ok(service.obtenerTodosPorId(ids));
     }
 
     private ResponseEntity<Map<String, String>> validar(BindingResult result) {
