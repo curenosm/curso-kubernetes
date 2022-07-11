@@ -1,4 +1,4 @@
-FROM openjdk:17.0.2
+FROM openjdk:17-jdk-alpine as builder
 
 WORKDIR /app/msvc-usuarios
 
@@ -7,13 +7,17 @@ COPY ./msvc-usuarios/.mvn ./.mvn
 COPY ./msvc-usuarios/mvnw .
 COPY ./msvc-usuarios/pom.xml .
 
-RUN ./mvnw clean package -Dmaven.test.skip -Dmaven.main.skip -Dspring-boot.repackage.skip && rm -rdf ./target/
+RUN ./mvnw clean package -Dmaven.test.skip -Dmaven.main.skip -Dspring-boot.repackage.skip && rm -rf ./target/
 
 COPY ./msvc-usuarios/src ./src
 
 RUN ./mvnw clean package -DskipTests
 
-EXPOSE 8001
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
 
-ENTRYPOINT ["java", "-jar", "./target/msvc-usuarios-0.0.1-SNAPSHOT.jar"]
+COPY --from=builder /app/msvc-usuarios/target/msvc-usuarios-0.0.1-SNAPSHOT.jar .
+
+EXPOSE 8001
+ENTRYPOINT ["java", "-jar", "msvc-usuarios-0.0.1-SNAPSHOT.jar"]
 
