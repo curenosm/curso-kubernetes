@@ -15,11 +15,13 @@ RUN ./mvnw clean package -DskipTests
 
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
+RUN mkdir ./logs
 
 COPY --from=builder /app/msvc-usuarios/target/msvc-usuarios-0.0.1-SNAPSHOT.jar .
 
 EXPOSE 8001
 # ENTRYPOINT ["java", "-jar", "msvc-usuarios-0.0.1-SNAPSHOT.jar"]
-CMD ["java", "-jar", "msvc-usuarios-0.0.1-SNAPSHOT.jar"]
+
 # nos permite sobreescribir el comando para poder hacer
 # docker run -p 8001:8001 --rm -it usuarios /bin/bash
+CMD ["java", "-jar", "msvc-usuarios-0.0.1-SNAPSHOT.jar"]
