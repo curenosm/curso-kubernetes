@@ -14,5 +14,6 @@
 - `docker image inspect <IMAGE_ID>`: Inspecciona la metadata de la imagen.
 - `docker container inspect <CONTAINER_ID>`: Inspecciona la metadata del contenedor.
 - `docker network --help`: Nos ayuda a administrar las redes.
+- `docker run -p 8001:8001 -d --rm --name msvc-usuarios --network spring usuarios`: Levantando en una red compartida
 
 ## Comandos utiles Kubernetes
