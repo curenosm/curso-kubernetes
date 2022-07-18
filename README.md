@@ -13,6 +13,6 @@
 - `docker images`: Muestra las imagenes creadas en el host.
 - `docker image inspect <IMAGE_ID>`: Inspecciona la metadata de la imagen.
 - `docker container inspect <CONTAINER_ID>`: Inspecciona la metadata del contenedor.
-
+- `docker network --help`: Nos ayuda a administrar las redes.
 
 ## Comandos utiles Kubernetes
