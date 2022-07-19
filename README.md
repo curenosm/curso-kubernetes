@@ -26,5 +26,6 @@
 - `docker run -it --rm --network spring postgres:14-alpine psql -h postgres14 -U postgres`: Conectarnos a cliente de postgresql.
 - `docker build --build-arg`
 - `docker run -e` o `docker run --env`: Agregar una variable de entorno.
+- `docker run -p 8001:8090 --env-file .\msvc-usuarios\.env -d --rm --name msvc-usuarios --network spring usuarios`: Cargando variables de entorno desde un archivo
 
 ## Comandos utiles Kubernetes
