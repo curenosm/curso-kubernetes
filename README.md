@@ -14,8 +14,10 @@
 - `docker image inspect <IMAGE_ID>`: Inspecciona la metadata de la imagen.
 - `docker container inspect <CONTAINER_ID>`: Inspecciona la metadata del contenedor.
 - `docker network --help`: Nos ayuda a administrar las redes.
-- `docker run -p 8001:8001 -d --rm --name msvc-usuarios --network spring usuarios`: Levantando en una red compartida
-- `docker pull mysql:8`7
-- `docker run -d -p 3307:3306 --name mysql8 --network spring -e MYSQL_ROOT_PASSWORD=sasa -e MYSQL_DATABASE=msvc_usuarios mysql:8`
+- `docker run -p 8001:8001 -d --rm --name msvc-usuarios --network spring usuarios`: Levantando en una red compartida.
+- `docker pull mysql:8`:.
+- `docker run -d -p 3307:3306 --name mysql8 --network spring -e MYSQL_ROOT_PASSWORD=sasa -e MYSQL_DATABASE=msvc_usuarios mysql:8`: Dockerizando mysql.
+- `docker run -d -p 5433:5432 --name postgres14 --network spring -e POSTGRES_PASSWORD=sasa -e POSTGRES_DB=msvc_cursos postgres:14-alpine`: Dockerizando postgres.
 - 
+
 ## Comandos utiles Kubernetes
