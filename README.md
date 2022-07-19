@@ -18,6 +18,13 @@
 - `docker pull mysql:8`:.
 - `docker run -d -p 3307:3306 --name mysql8 --network spring -e MYSQL_ROOT_PASSWORD=sasa -e MYSQL_DATABASE=msvc_usuarios mysql:8`: Dockerizando mysql.
 - `docker run -d -p 5433:5432 --name postgres14 --network spring -e POSTGRES_PASSWORD=sasa -e POSTGRES_DB=msvc_cursos postgres:14-alpine`: Dockerizando postgres.
-- 
+- `docker run -d -p 3307:3306 --name mysql8 --network spring -e MYSQL_ROOT_PASSWORD=sasa -e MYSQL_DATABASE=msvc_usuarios -v data-mysql:/var/lib/mysql --restart=always mysql:8`
+- `docker run -d -p 5433:5432 --name postgres14 --network spring -e POSTGRES_PASSWORD=sasa -e POSTGRES_DB=msvc_cursos -v data-postgres:/var/lib/postgresql/data --restart=always postgres:14-alpine`
+- `docker volume ls`
+- `docker run -it --rm mysql8 --network spring mysql:8 bash`: Entrar en modo interactivo a cliente de mysql
+- `mysql -hmysql8 -uroot -p`: Nos pide el password
+- `docker run -it --rm --network spring postgres:14-alpine psql -h postgres14 -U postgres`: Conectarnos a cliente de postgresql.
+- `docker build --build-arg`
+- `docker run -e` o `docker run --env`: Agregar una variable de entorno.
 
 ## Comandos utiles Kubernetes
