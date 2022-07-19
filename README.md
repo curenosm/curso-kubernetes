@@ -24,8 +24,9 @@
 - `docker run -it --rm mysql8 --network spring mysql:8 bash`: Entrar en modo interactivo a cliente de mysql
 - `mysql -hmysql8 -uroot -p`: Nos pide el password
 - `docker run -it --rm --network spring postgres:14-alpine psql -h postgres14 -U postgres`: Conectarnos a cliente de postgresql.
-- `docker build --build-arg`
+- `docker build -t usuarios . f .\msvc-usuarios\Dockerfile --build-arg PORT_APP`
 - `docker run -e` o `docker run --env`: Agregar una variable de entorno.
 - `docker run -p 8001:8090 --env-file .\msvc-usuarios\.env -d --rm --name msvc-usuarios --network spring usuarios`: Cargando variables de entorno desde un archivo
+
 
 ## Comandos utiles Kubernetes
