@@ -15,5 +15,7 @@
 - `docker container inspect <CONTAINER_ID>`: Inspecciona la metadata del contenedor.
 - `docker network --help`: Nos ayuda a administrar las redes.
 - `docker run -p 8001:8001 -d --rm --name msvc-usuarios --network spring usuarios`: Levantando en una red compartida
-
+- `docker pull mysql:8`7
+- `docker run -d -p 3307:3306 --name mysql8 --network spring -e MYSQL_ROOT_PASSWORD=sasa -e MYSQL_DATABASE=msvc_usuarios mysql:8`
+- 
 ## Comandos utiles Kubernetes
