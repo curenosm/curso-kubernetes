@@ -31,6 +31,10 @@
 
 ## Docker compose
 
-- ``
+- `docker-compose up --build`
+- `docker-compose down`: Hace un stop de todos los contenedores.
+- `docker-compose down -v`: Hace un stop de todos los contenedores, además elimina los volumenes asociados.
+- `docker-compose start`: Vuelve a levantar los contenedores preexistentes, usando ctl+c salimos del modo interactivo sin eliminarlos.
+- 
 
 ## Comandos utiles Kubernetes

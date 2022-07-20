@@ -1,10 +1,11 @@
-version: 3.7
+version: "3.7"
 
 # Por defecto se crean todos los servicios en la misma red, entonces no hay necesidad de especificar
 # explicitamente la red que comparten
 services:
 
   mysql8:
+    container_name: mysql8
     image: mysql:8
     ports:
       - "3307:3306"
@@ -18,6 +19,7 @@ services:
       - spring
 
   postgres14:
+    container_name: postgres14
     image: postgres:14-alpine
     ports:
       - "5433:5432"
@@ -31,9 +33,10 @@ services:
       - spring
 
   msvc-usuarios:
+    container_name: msvc-usuarios
     build:
-      context: ./msvc-usuarios
-      dockerfile: Dockerfile
+      context: ./
+      dockerfile: ./msvc-usuarios/Dockerfile
     env_file: ./msvc-usuarios/.env
     ports:
       - "8001:8001"
@@ -44,21 +47,26 @@ services:
     restart: always
 
   msvc-cursos:
+    container_name: msvc-cursos
     build:
-      context: ./msvc-cursos
-      dockerfile: Dockerfile
+      context: ./
+      dockerfile: ./msvc-cursos/Dockerfile
     env_file: ./msvc-cursos/.env
     ports:
       - "8002:8002"
     depends_on:
       - postgres14
+      - msvc-usuarios
     networks:
       - spring
     restart: always
 
 networks:
   spring:
+    name: spring
 
 volumes:
   data-mysql:
+    name: data-mysql
   data-postgres:
+    name: data-postgres
