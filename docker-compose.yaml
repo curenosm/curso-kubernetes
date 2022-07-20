@@ -1,0 +1,41 @@
+version: 3.7
+
+services:
+
+  mysql8:
+    volumes:
+      -
+
+  postgres14:
+    volumes:
+      -
+
+  msvc-usuarios:
+    build:
+      context: ./msvc-usuarios
+      dockerfile: Dockerfile
+    expose:
+      - 8001:8001
+    depends_on:
+      - mysql
+    networks:
+      - spring
+
+  msvc-cursos:
+    build:
+      context: ./msvc-cursos
+      dockerfile: Dockerfile
+    expose:
+      - 8002:8002
+    depends_on:
+      - postgres
+    networks:
+      - spring
+
+networks:
+  spring:
+    name: spring
+
+
+volumes:
+  - 

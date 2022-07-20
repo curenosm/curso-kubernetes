@@ -29,4 +29,8 @@
 - `docker run -p 8001:8090 --env-file .\msvc-usuarios\.env -d --rm --name msvc-usuarios --network spring usuarios`: Cargando variables de entorno desde un archivo
 
 
+## Docker compose
+
+- ``
+
 ## Comandos utiles Kubernetes
