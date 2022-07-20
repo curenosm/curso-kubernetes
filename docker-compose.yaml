@@ -1,19 +1,41 @@
 version: 3.7
 
+# Por defecto se crean todos los servicios en la misma red, entonces no hay necesidad de especificar
+# explicitamente la red que comparten
 services:
 
   mysql8:
+    image: mysql:8
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: sasa
+      MYSQL_DATABASE: msvc_usuarios
     volumes:
-      -
+      - data-mysql:/var/lib/mysql
+    restart: always
+    networks:
+      - spring
 
   postgres14:
+    image: postgres:14-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=sasa
+      - POSTGRES_DB=msvc_cursos
     volumes:
-      -
+      - data-postgres:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - spring
 
   msvc-usuarios:
     build:
       context: ./msvc-usuarios
       dockerfile: Dockerfile
+    env_file:
+      - .env
     expose:
       - 8001:8001
     depends_on:
@@ -25,6 +47,8 @@ services:
     build:
       context: ./msvc-cursos
       dockerfile: Dockerfile
+    env_file:
+      - .env
     expose:
       - 8002:8002
     depends_on:
@@ -34,8 +58,3 @@ services:
 
 networks:
   spring:
-    name: spring
-
-
-volumes:
-  - 
