@@ -1,5 +1,9 @@
-FROM openjdk:17-jdk-alpine as builder
 ARG MSVC_NAME=msvc_usuarios
+
+FROM openjdk:17-jdk-alpine as builder
+
+ARG MSVC_NAME
+
 WORKDIR /app/$MSVC_NAME
 
 COPY ./pom.xml /app
@@ -16,7 +20,7 @@ RUN ./mvnw clean package -DskipTests
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
 RUN mkdir ./logs
-ARG MSVC_NAME=msvc_usuarios
+ARG MSVC_NAME
 ARG TARGET_FOLDER=/app/$MSVC_NAME/target
 COPY --from=builder $TARGET_FOLDER/${MSVC_NAME}-0.0.1-SNAPSHOT.jar .
 ARG APP_PORT=8001
