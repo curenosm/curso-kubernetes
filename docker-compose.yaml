@@ -34,9 +34,10 @@ services:
 
   msvc-usuarios:
     container_name: msvc-usuarios
-    build:
-      context: ./
-      dockerfile: ./msvc-usuarios/Dockerfile
+    image: curenosm/usuarios:latest
+    # build:
+    #   context: ./
+    #   dockerfile: ./msvc-usuarios/Dockerfile
     env_file: ./msvc-usuarios/.env
     ports:
       - "8001:8001"
@@ -48,9 +49,10 @@ services:
 
   msvc-cursos:
     container_name: msvc-cursos
-    build:
-      context: ./
-      dockerfile: ./msvc-cursos/Dockerfile
+    image: curenosm/cursos:latest
+    # build:
+    #   context: ./
+    #   dockerfile: ./msvc-cursos/Dockerfile
     env_file: ./msvc-cursos/.env
     ports:
       - "8002:8002"
