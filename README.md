@@ -27,6 +27,11 @@
 - `docker build -t usuarios . f .\msvc-usuarios\Dockerfile --build-arg PORT_APP`
 - `docker run -e` o `docker run --env`: Agregar una variable de entorno.
 - `docker run -p 8001:8090 --env-file .\msvc-usuarios\.env -d --rm --name msvc-usuarios --network spring usuarios`: Cargando variables de entorno desde un archivo
+- `docker push imagen:tag`
+- `docker pull <DOCKER_HUB_USERNAME>/<IMAGE>:<TAG>`
+- `docker tag <IMAGEN_A_RENOMBRAR> <USERNAME>/<NEW_NAME>`: Clonar una imagen existente y darle un nuevo nombre
+- `docker login`: Iniciar sesion en docker hub.
+- `docker logout`: Cerrar sesion.
 
 
 ## Docker compose
