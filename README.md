@@ -43,3 +43,15 @@
 - 
 
 ## Comandos utiles Kubernetes
+
+
+### Conceptos
+
+- Pods:
+- Deployment:
+- Service: 
+- Namespace:
+- Volume:
+
+Al igual que en docker podemos trabajar de manera imperativa (mediante el uso de comandos)
+o bien declarativa (mediante un archivo de especificacion).
