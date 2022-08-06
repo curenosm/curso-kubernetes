@@ -47,7 +47,12 @@
 
 ### Conceptos
 
-- Pods:
+- Pods: Unidad mas pequeña que tenemos en K8s, es una especie de wrapper administrativo de un contenedor.
+Si el pod tiene mas de un contenedor, los contenedores se comunicarán usando localhost. Algo similar a una
+tarea en ECS AWS. Cada Pod contiene una IP address interna del cluster. Es imprtante notar que la IP
+NO es estatica. Los Pod en general son efimeros, pueden reemplazarse, eliminarse, crear otro, etc. Los Pods
+pueden contener recursos (volume) en comun para todos los contenedores.
+
 - Deployment:
 - Service: 
 - Namespace:
