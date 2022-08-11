@@ -61,7 +61,15 @@ cluster de K8s .
 - `kubectl expose deployment mysql8 --port=3306 --type=ClusterIP`: Permite solo una comunicacion interna entre los pods.
 - `kubectl expose deployment mysql8 --port=3306 --type=NodePort`: Permite acceder mediante la ip publica, desde fuera(internet).
 - `kubectl expose deployment mysql8 --port=3306 --type=LoadBalancer`:
+- `kubectl create deployment msvc-usuarios --image=curenosm/usuarios:latest --port=8001`: 
+- `kubectl get all`: Nos permite ver el escenario completo de nuestros deployments, pods, services, replicasets, etc...
 - 
+
+### OBSERVACIONES:
+- Minikube (el cluster de K8s): No tiene acceso a las imagenes que hemos descargado haciendo uso de docker desktop
+lo que significa que además de tener que descargar las imagenes de mysql por ejemplo, no tendrá acceso a las
+imagenes que hemos creado nosotros mismos haciendo uso de docker desktop; i.e. minikube siempre usará imagenes
+de docker hub.
 
 ### Conceptos
 
