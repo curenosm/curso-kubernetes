@@ -58,6 +58,10 @@ variables de ambiente. Para hacer uso de las mismas, hay que usar la forma decla
 - `kubectl create deployment mysql8 --image=mysql:8 --port=3306 --dry-run=client -o yaml > <deployment_file>.yaml`: Solo se imprime la confiuracion sin enviar al 
 cluster de K8s .
 - `kubectl apply -f ./deployment-mysql.yaml`: Cuando se trata de archivos usamos apply.
+- `kubectl expose deployment mysql8 --port=3306 --type=ClusterIP`: Permite solo una comunicacion interna entre los pods.
+- `kubectl expose deployment mysql8 --port=3306 --type=NodePort`: Permite acceder mediante la ip publica, desde fuera(internet).
+- `kubectl expose deployment mysql8 --port=3306 --type=LoadBalancer`:
+- 
 
 ### Conceptos
 
@@ -68,7 +72,7 @@ NO es estatica. Los Pod en general son efimeros, pueden reemplazarse, eliminarse
 pueden contener recursos (volume) en comun para todos los contenedores.
 
 - Deployment:
-- Service: 
+- Service: Reune un conjunto de pods y una politica por la cual se puede acceder a ellos.
 - Namespace:
 - Volume:
 - Resource: Any of the previous.
