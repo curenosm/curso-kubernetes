@@ -44,6 +44,16 @@
 
 ## Comandos utiles Kubernetes
 
+- `minikube start`: Levantamos el servicio de minikube.
+- `kubectl help`: Ayuda.
+- `kubectl create`: Nos permite crear un recurso, ya sea un pod, un deployment, etc. 
+- `kubectl create deployment mysql8 --image=mysql:8 --port=3306`: OBS el comando no maneja
+variables de ambiente. Para hacer uso de las mismas, hay que usar la forma declarativa.
+- `kubectl get deployments`: Listar todos los deployments.
+- `kubectl get pods`: Lista todos los pods.
+- `kubectl describe pods <pod_name>`: Nos brinda información util sobre el estado de un pod determinado.
+- `kubectl logs <resource_name>`: Nos muestra información detallada sobre el estado del recurso dado.
+- 
 
 ### Conceptos
 
@@ -57,6 +67,7 @@ pueden contener recursos (volume) en comun para todos los contenedores.
 - Service: 
 - Namespace:
 - Volume:
+- Resource: Any of the previous.
 
 Al igual que en docker podemos trabajar de manera imperativa (mediante el uso de comandos)
 o bien declarativa (mediante un archivo de especificacion).
