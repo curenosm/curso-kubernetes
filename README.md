@@ -53,7 +53,11 @@ variables de ambiente. Para hacer uso de las mismas, hay que usar la forma decla
 - `kubectl get pods`: Lista todos los pods.
 - `kubectl describe pods <pod_name>`: Nos brinda información util sobre el estado de un pod determinado.
 - `kubectl logs <resource_name>`: Nos muestra información detallada sobre el estado del recurso dado.
-- 
+- `kubectl get deploy`: Obtiene todos los deployments.
+- `kubectl delete deployment <resource_name> `: Elimina un deployment.
+- `kubectl create deployment mysql8 --image=mysql:8 --port=3306 --dry-run=client -o yaml > <deployment_file>.yaml`: Solo se imprime la confiuracion sin enviar al 
+cluster de K8s .
+- `kubectl apply -f ./deployment-mysql.yaml`: Cuando se trata de archivos usamos apply.
 
 ### Conceptos
 
