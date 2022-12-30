@@ -60,7 +60,7 @@ cluster de K8s .
 - `kubectl apply -f ./deployment-mysql.yaml`: Cuando se trata de archivos usamos apply.
 - `kubectl expose deployment mysql8 --port=3306 --type=ClusterIP`: Permite solo una comunicacion interna entre los pods.
 - `kubectl expose deployment mysql8 --port=3306 --type=NodePort`: Permite acceder mediante la ip publica, desde fuera(internet).
-- `kubectl expose deployment mysql8 --port=3306 --type=LoadBalancer`:
+- `kubectl expose deployment mysql8 --port=3306 --type=LoadBalancer`: Cuando lidiamos con una situacion multimaquina, es conveniente balancear la carga externamente
 - `kubectl create deployment msvc-usuarios --image=curenosm/usuarios:latest --port=8001`: 
 - `kubectl get all`: Nos permite ver el escenario completo de nuestros deployments, pods, services, replicasets, etc...
 - 
