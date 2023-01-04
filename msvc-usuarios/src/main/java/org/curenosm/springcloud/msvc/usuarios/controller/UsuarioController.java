@@ -3,6 +3,8 @@ package org.curenosm.springcloud.msvc.usuarios.controller;
 import org.curenosm.springcloud.msvc.usuarios.model.entities.Usuario;
 import org.curenosm.springcloud.msvc.usuarios.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -17,6 +19,14 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService service;
+
+    @Autowired
+    private ApplicationContext context;
+
+    @GetMapping("/crash")
+    public void crash() {
+        ((ConfigurableApplicationContext ) context).close();
+    }
 
     @GetMapping("/")
     public Map<String, List<Usuario>> listar() {

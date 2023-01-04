@@ -63,7 +63,13 @@ cluster de K8s .
 - `kubectl expose deployment mysql8 --port=3306 --type=LoadBalancer`: Cuando lidiamos con una situacion multimaquina, es conveniente balancear la carga externamente
 - `kubectl create deployment msvc-usuarios --image=curenosm/usuarios:latest --port=8001`: 
 - `kubectl get all`: Nos permite ver el escenario completo de nuestros deployments, pods, services, replicasets, etc...
-- 
+- `minikube service msvc-usuarios --url`: No permite obtener la ip externa al cluster para poder acceder a nuestro microservicios
+- `kubectl set image deployment msvc-usuarios usuarios=curenosm/usuarios:latest`
+
+- `kubectl delete -f .\deployment-usuarios.yaml`: Eliminar el recurso asociado a un archivo en especifico
+- `kubectl apply -f .\deployment-usuarios.yaml`: Crear/actualizar el recurso asociado a un archivo en especifico (en este caso un deployment, pero tambien aplica a services, etc)
+- `minikube dashboard`
+
 
 ### OBSERVACIONES:
 - Minikube (el cluster de K8s): No tiene acceso a las imagenes que hemos descargado haciendo uso de docker desktop

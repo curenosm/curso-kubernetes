@@ -3,8 +3,8 @@ FROM openjdk:17-jdk-alpine as builder
 WORKDIR /app/msvc-cursos
 
 COPY ./pom.xml /app
-COPY ./msvc-cursos/.mvn ./.mvn
-COPY ./msvc-cursos/mvnw .
+COPY .mvn ./.mvn
+COPY mvnw .
 COPY ./msvc-cursos/pom.xml .
 
 #RUN ./mvnw clean package -Dmaven.test.skip -Dmaven.main.skip -Dspring-boot.repackage.skip && rm -r ./target/
