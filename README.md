@@ -68,6 +68,7 @@ cluster de K8s .
 
 - `kubectl delete -f .\deployment-usuarios.yaml`: Eliminar el recurso asociado a un archivo en especifico
 - `kubectl apply -f .\deployment-usuarios.yaml`: Crear/actualizar el recurso asociado a un archivo en especifico (en este caso un deployment, pero tambien aplica a services, etc)
+- `kubectl apply -f .\deployment-usuarios.yaml -f .\svc-usuarios.yaml`
 - `minikube dashboard`
 
 
