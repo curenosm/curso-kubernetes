@@ -1,10 +1,7 @@
 package org.curenosm.springcloud.msvc.usuarios.model.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name="usuarios")
@@ -22,9 +19,11 @@ public class Usuario {
 
     @Email
     @Column(unique=true)
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     private String email;
 
     @NotBlank
+    @Size(min = 8)
     private String password;
 
     public Long getId() {

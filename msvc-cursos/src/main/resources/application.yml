@@ -1,0 +1,63 @@
+# Related to messages and internationalization of the application
+spring:
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  profiles:
+    active: ${ACTIVE_PROFILE_ENV_VARIABLE:dev}
+    # Para vincular los perfiles de maven
+    # active: @appProfile@
+
+# Para definir diferentes perfiles en un mismo archivo yml,
+# la otra alternativa es tener un archivo properties con la forma
+
+# application-dev.properties, application-prod.properties
+
+#---
+#
+#spring:
+#  profiles:
+#    active: dev
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL57Dialect
+#    hibernate:
+#      ddl-auto: create-drop
+#  messages:
+#    basename: i18n/messages
+#    encoding: UTF-8
+#
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: debug
+#
+#---
+#
+#spring:
+#  profiles: dev
+#  datasource:
+#    url: jdbc:mysql://${DB_IP:localhost}:${DB_PORT:3306}/${DB_NAME:localdb}?useSSL=false
+#    username: ${DB_USERNAME:root}
+#    password: ${DB_PASSWORD:root}
+#
+#---
+#
+#spring:
+#  profiles: qa
+#  datasource:
+#    url: jdbc:mysql://${DB_IP:10.20.30.40}:${DB_PORT:3306}/${DB_NAME:pruebas}?useSSL=false
+#    username: ${DB_USERNAME:sa}
+#    password: ${DB_PASSWORD:sa}
+#
+#---
+#
+#spring:
+#  profiles: prod
+#  datasource:
+#    url: jdbc:mysql://${DB_IP:10.20.30.40}:${DB_PORT:3306}/${DB_NAME:msvc-cursos}
+#    username: ${DB_USERNAME:user}
+#    password: ${DB_PASSWORD:Mipassword1+}
+#

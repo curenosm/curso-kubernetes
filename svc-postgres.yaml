@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: postgres14
 spec:
+  type: ClusterIP
+  selector:
+    role: postgres
   ports:
     - port: 5432
       protocol: TCP
       targetPort: 5432
-  selector:
-    role: postgres
-  type: ClusterIP

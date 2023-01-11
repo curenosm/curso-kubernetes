@@ -1,0 +1,35 @@
+# Related to messages and internationalization of the application
+spring:
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  profiles:
+    active: ${ACTIVE_PROFILE_ENV_VARIABLE:dev}
+    # Para vincular los perfiles de maven
+    # active: @appProfile@
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+
+# Para definir diferentes perfiles en un mismo archivo yml,
+# la otra alternativa es tener un archivo properties con la forma
+
+# application-dev.properties, application-prod.properties
+
+#---
+#
+#spring:
+#  profiles:
+#    active: dev
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL57Dialect
+#    hibernate:
+#      ddl-auto: create-drop
+#  messages:
+#    basename: i18n/messages
+#    encoding: UTF-8

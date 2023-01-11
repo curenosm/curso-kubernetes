@@ -1,0 +1,6 @@
+#spring:
+#  profiles: dev
+#  datasource:
+#    url: jdbc:mysql://${DB_IP:localhost}:${DB_PORT:3306}/${DB_NAME:localdb}?useSSL=false
+#    username: ${DB_USERNAME:root}
+#    password: ${DB_PASSWORD:root}

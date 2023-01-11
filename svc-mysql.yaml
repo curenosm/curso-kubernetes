@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: mysql8
 spec:
+  type: ClusterIP
+  selector:
+    app: mysql8
   ports:
     - port: 3306
       protocol: TCP
       targetPort: 3306
-    selector:
-      app: mysql8
-    type: ClusterIP
