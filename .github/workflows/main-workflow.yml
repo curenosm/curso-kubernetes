@@ -52,6 +52,8 @@ jobs:
           ls -a
         shell: bash
       - name: Build docker-compose
-        run: docker-compose up --build
+        run: |
+          C:\Program Files\Docker\Docker\DockerCli.exe -SwitchDaemon
+          docker-compose up --build
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
