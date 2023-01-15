@@ -29,7 +29,7 @@ jobs:
         with:
           who-to-greet: John
       - name: Testing Phase
-        run:
+        run: |
           cd msvc-cursos
           ./mvnw clean test
           cd ../msvc-usuarios
@@ -58,7 +58,7 @@ jobs:
           ls -a
         shell: bash
       - name: Testing Phase
-        run:
+        run: |
           cd msvc-cursos
           mvnw.cmd clean test
           cd ../msvc-usuarios
