@@ -62,9 +62,9 @@ jobs:
       - name: Testing Phase
         run: |
           cd msvc-cursos
-          mvnw.cmd clean test
+          .\mvnw.cmd clean test
           cd ../msvc-usuarios
-          mvnw.cmd clean test
+          .\mvnw.cmd clean test
       - name: Build docker-compose
         run: |
           C:\"Program Files"\Docker\Docker\DockerCli.exe -SwitchDaemon
