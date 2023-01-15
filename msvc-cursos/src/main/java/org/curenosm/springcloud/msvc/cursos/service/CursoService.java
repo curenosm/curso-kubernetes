@@ -8,21 +8,25 @@ import java.util.Optional;
 
 public interface CursoService {
 
-    List<Curso> listar();
+    List<Curso> findAll();
 
     Optional<Curso> buscarPorIdConUsuarios(Long id);
 
-    Optional<Curso> buscarPorId(Long id);
+    Optional<Curso> findById(Long id);
 
-    Curso guardar(Curso curso);
 
-    void eliminar(Long id);
+    Optional<Curso> findByNombre(String nombre);
 
-    void eliminarCursoUsuarioPorId(Long id);
+    Curso save(Curso curso);
 
-    Optional<Usuario> asignarUsuario(Usuario usuario, Long id);
+    void deleteById(Long id);
 
-    Optional<Usuario> crearUsuario(Usuario usuario, Long cursoId);
+    void deleteCursoUsuarioById(Long id);
 
-    Optional<Usuario> eliminarUsuario(Usuario usuario, Long cursoId);
+    Optional<Usuario> assignUser(Usuario usuario, Long id);
+
+    Optional<Usuario> createUser(Usuario usuario, Long cursoId);
+
+    Optional<Usuario> deleteUser(Usuario usuario, Long cursoId);
+
 }

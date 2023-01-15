@@ -13,27 +13,28 @@ spring:
 
 # application-dev.properties, application-prod.properties
 
-#---
-#
+---
+
 #spring:
 #  profiles:
-#    active: dev
+#    active: test
 #  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:testdb
+#    username: testdb
+#    password:
 #  jpa:
-#    database-platform: org.hibernate.dialect.MySQL57Dialect
-#    hibernate:
-#      ddl-auto: create-drop
-#  messages:
-#    basename: i18n/messages
-#    encoding: UTF-8
-#
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        SQL: debug
-#
+#    database-platform: org.hibernate.dialect.H2Dialect
+#  config:
+#    activate:
+#      on-profile:
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+
 #---
 #
 #spring:

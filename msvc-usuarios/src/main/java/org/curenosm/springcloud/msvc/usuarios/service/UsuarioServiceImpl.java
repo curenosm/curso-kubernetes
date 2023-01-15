@@ -21,45 +21,45 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Usuario> listar() {
+    public List<Usuario> findAll() {
         return (List<Usuario>) repository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Usuario> buscarPorId(Long id) {
+    public Optional<Usuario> findById(Long id) {
         return repository.findById(id);
     }
 
     @Override
     @Transactional
-    public Usuario guardar(Usuario usuario) {
+    public Usuario save(Usuario usuario) {
         return repository.save(usuario);
     }
 
     @Override
     @Transactional
-    public void eliminar(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
         client.eliminarCursoUsuarioPorId(id);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Usuario> buscarPorEmail(String email) {
+    public Optional<Usuario> findByEmail(String email) {
         return repository.findByEmail(email);
         // return repository.buscarPorEmail(email);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public boolean existe(String email) {
+    public boolean exists(String email) {
         return repository.existsByEmail(email);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Usuario> obtenerTodosPorId(Iterable<Long> ids) {
+    public List<Usuario> findAllByIds(Iterable<Long> ids) {
         return (List<Usuario>) repository.findAllById(ids);
     }
 }

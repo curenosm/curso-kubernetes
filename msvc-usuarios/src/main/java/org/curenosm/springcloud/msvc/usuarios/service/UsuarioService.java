@@ -7,18 +7,18 @@ import java.util.Optional;
 
 public interface UsuarioService {
 
-    List<Usuario> listar();
+    List<Usuario> findAll();
 
-    Optional<Usuario> buscarPorId(Long id);
+    Optional<Usuario> findById(Long id);
 
-    Usuario guardar(Usuario usuario);
+    Usuario save(Usuario usuario);
 
-    void eliminar(Long id);
+    void delete(Long id);
 
-    Optional<Usuario> buscarPorEmail(String email);
+    Optional<Usuario> findByEmail(String email);
 
-    boolean existe(String email);
+    boolean exists(String email);
 
-    List<Usuario> obtenerTodosPorId(Iterable<Long> ids);
+    List<Usuario> findAllByIds(Iterable<Long> ids);
 
 }

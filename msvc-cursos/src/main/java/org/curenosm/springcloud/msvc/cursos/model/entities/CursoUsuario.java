@@ -1,7 +1,12 @@
 package org.curenosm.springcloud.msvc.cursos.model.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "cursos_usuarios")
 public class CursoUsuario {
@@ -12,22 +17,6 @@ public class CursoUsuario {
 
     @Column(name = "usuario_id", unique = true)
     private Long usuarioId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
-    }
 
     @Override
     public boolean equals(Object o) {

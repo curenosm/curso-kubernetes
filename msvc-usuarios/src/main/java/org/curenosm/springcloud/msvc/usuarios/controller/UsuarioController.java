@@ -17,11 +17,14 @@ import java.util.*;
 // @RequestMapping("/api")
 public class UsuarioController {
 
-    @Autowired
-    private UsuarioService service;
+    private final UsuarioService service;
+    private final ApplicationContext context;
 
     @Autowired
-    private ApplicationContext context;
+    public UsuarioController(UsuarioService service, ApplicationContext context) {
+        this.service = service;
+        this.context = context;
+    }
 
     @GetMapping("/crash")
     public void crash() {
@@ -30,12 +33,12 @@ public class UsuarioController {
 
     @GetMapping("/")
     public Map<String, List<Usuario>> listar() {
-        return Collections.singletonMap("usuarios", service.listar());
+        return Collections.singletonMap("usuarios", service.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> buscar(@PathVariable Long id) {
-        Optional<Usuario> o = service.buscarPorId(id);
+        Optional<Usuario> o = service.findById(id);
 
         if (o.isPresent())
             return ResponseEntity.ok(o.get());
@@ -51,14 +54,14 @@ public class UsuarioController {
         if (result.hasErrors())
             return validar(result);
 
-        if (!usuario.getEmail().isEmpty() && service.existe(usuario.getEmail()))
+        if (!usuario.getEmail().isEmpty() && service.exists(usuario.getEmail()))
             return ResponseEntity.badRequest().body(
                     Collections.singletonMap("mensaje", "Ya existe un usuario con ese correo electrónico!")
             );
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(service.guardar(usuario));
+                .body(service.save(usuario));
     }
 
     @PutMapping("/{id}")
@@ -69,7 +72,7 @@ public class UsuarioController {
         if (result.hasErrors())
             return validar(result);
 
-        Optional<Usuario> o = service.buscarPorId(id);
+        Optional<Usuario> o = service.findById(id);
 
         if (o.isPresent()) {
             Usuario usuarioDb = o.get();
@@ -79,14 +82,14 @@ public class UsuarioController {
             usuarioDb.setPassword(usuario.getPassword());
 
             if (!usuario.getEmail().equalsIgnoreCase(usuarioDb.getEmail())
-                    && service.buscarPorEmail(usuario.getEmail()).isPresent())
+                    && service.findByEmail(usuario.getEmail()).isPresent())
                 return ResponseEntity.badRequest().body(
                         Collections.singletonMap("mensaje", "Ya existe un usuario con ese correo electrónico!")
                 );
 
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(service.guardar(usuarioDb));
+                    .body(service.save(usuarioDb));
         }
 
         return ResponseEntity.notFound().build();
@@ -95,10 +98,10 @@ public class UsuarioController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Long id) {
 
-        Optional<Usuario> o = service.buscarPorId(id);
+        Optional<Usuario> o = service.findById(id);
 
         if (o.isPresent()) {
-            service.eliminar(id);
+            service.delete(id);
             return ResponseEntity.noContent().build();
         }
 
@@ -108,7 +111,7 @@ public class UsuarioController {
 
     @GetMapping("/usuarios-curso")
     public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam List<Long> ids) {
-        return ResponseEntity.ok(service.obtenerTodosPorId(ids));
+        return ResponseEntity.ok(service.findAllByIds(ids));
     }
 
     private ResponseEntity<Map<String, String>> validar(BindingResult result) {

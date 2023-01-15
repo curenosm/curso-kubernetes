@@ -1,54 +1,58 @@
 package org.curenosm.springcloud.msvc.cursos.service;
 
+import lombok.AllArgsConstructor;
 import org.curenosm.springcloud.msvc.cursos.clients.UsuarioClientRest;
 import org.curenosm.springcloud.msvc.cursos.model.Usuario;
 import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 import org.curenosm.springcloud.msvc.cursos.model.entities.CursoUsuario;
 import org.curenosm.springcloud.msvc.cursos.repository.CursoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class CursoServiceImpl implements CursoService {
 
-    @Autowired
+    // It's not necessary to mark them as Autowired because there exists an all args constructor
     private CursoRepository repository;
 
-    @Autowired
     private UsuarioClientRest client;
 
     @Override
     @Transactional(readOnly = true)
-    public List<Curso> listar() {
+    public List<Curso> findAll() {
         return (List<Curso>) repository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Curso> buscarPorId(Long id) {
+    public Optional<Curso> findById(Long id) {
         return repository.findById(id);
     }
 
     @Override
+    public Optional<Curso> findByNombre(String nombre) {
+        return repository.findByNombre(nombre);
+    }
+
+    @Override
     @Transactional
-    public Curso guardar(Curso curso) {
+    public Curso save(Curso curso) {
         return repository.save(curso);
     }
 
     @Override
     @Transactional
-    public void eliminar(Long id) {
+    public void deleteById(Long id) {
         repository.deleteById(id);
     }
 
     @Override
     @Transactional
-    public Optional<Usuario> asignarUsuario(Usuario usuario, Long cursoId) {
+    public Optional<Usuario> assignUser(Usuario usuario, Long cursoId) {
         Optional<Curso> o = repository.findById(cursoId);
 
         if (o.isPresent()) {
@@ -57,7 +61,7 @@ public class CursoServiceImpl implements CursoService {
             Curso curso = o.get();
             CursoUsuario cursoUsuario = new CursoUsuario();
             cursoUsuario.setUsuarioId(usuarioMsvc.getId());
-            curso.addCursoUsuario(cursoUsuario);
+            curso.getCursoUsuarios().add(cursoUsuario);
             repository.save(curso);
 
             return Optional.of(usuarioMsvc);
@@ -68,7 +72,7 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     @Transactional
-    public Optional<Usuario> crearUsuario(Usuario usuario, Long cursoId) {
+    public Optional<Usuario> createUser(Usuario usuario, Long cursoId) {
 
         Optional<Curso> o = repository.findById(cursoId);
 
@@ -78,7 +82,7 @@ public class CursoServiceImpl implements CursoService {
             Curso curso = o.get();
             CursoUsuario cursoUsuario = new CursoUsuario();
             cursoUsuario.setUsuarioId(usuarioNuevoMsvc.getId());
-            curso.addCursoUsuario(cursoUsuario);
+            curso.getCursoUsuarios().add(cursoUsuario);
             repository.save(curso);
 
             return Optional.of(usuarioNuevoMsvc);
@@ -89,7 +93,7 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     @Transactional
-    public Optional<Usuario> eliminarUsuario(Usuario usuario, Long cursoId) {
+    public Optional<Usuario> deleteUser(Usuario usuario, Long cursoId) {
         Optional<Curso> o = repository.findById(cursoId);
 
         if (o.isPresent()) {
@@ -98,8 +102,7 @@ public class CursoServiceImpl implements CursoService {
             Curso curso = o.get();
             CursoUsuario cursoUsuario = new CursoUsuario();
             cursoUsuario.setUsuarioId(usuarioMsvc.getId());
-
-            curso.removeCursoUsuario(cursoUsuario);
+            curso.getCursoUsuarios().remove(cursoUsuario);
             repository.save(curso);
 
             return Optional.of(usuarioMsvc);
@@ -135,7 +138,7 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public void eliminarCursoUsuarioPorId(Long id) {
+    public void deleteCursoUsuarioById(Long id) {
         repository.eliminarCursoUsuarioPorId(id);
     }
 }

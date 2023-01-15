@@ -8,8 +8,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessagesServiceUtilImpl implements MessagesServiceUtil {
 
+    private final MessageSource messages;
+
     @Autowired
-    private MessageSource messages;
+    public MessagesServiceUtilImpl(MessageSource messages) {
+        this.messages = messages;
+    }
 
     public String getGreeting(String name) {
         return messages.getMessage("user.greeting", new String[]{name}, LocaleContextHolder.getLocale());

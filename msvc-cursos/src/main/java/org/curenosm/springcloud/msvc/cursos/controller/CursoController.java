@@ -16,12 +16,16 @@ import java.util.*;
 @RestController
 public class CursoController {
 
+    private final CursoService service;
+
     @Autowired
-    private CursoService service;
+    public CursoController(CursoService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<Curso>> listar() {
-        return ResponseEntity.ok(service.listar());
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
@@ -39,7 +43,7 @@ public class CursoController {
         if (result.hasErrors())
             return validar(result);
 
-        Curso cursoDB = service.guardar(curso);
+        Curso cursoDB = service.save(curso);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -53,12 +57,12 @@ public class CursoController {
         if (result.hasErrors())
             return validar(result);
 
-        Optional<Curso> o = service.buscarPorId(id);
+        Optional<Curso> o = service.findById(id);
 
         if (o.isPresent()) {
             Curso cursoDB = o.get();
             cursoDB.setNombre(curso.getNombre());
-            return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(cursoDB));
+            return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cursoDB));
         }
 
         return ResponseEntity.notFound().build();
@@ -66,10 +70,10 @@ public class CursoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Long id) {
-        Optional<Curso> o = service.buscarPorId(id);
+        Optional<Curso> o = service.findById(id);
 
         if (o.isPresent()) {
-            service.eliminar(o.get().getId());
+            service.deleteById(o.get().getId());
             return ResponseEntity.noContent().build();
         }
 
@@ -82,7 +86,7 @@ public class CursoController {
         Optional<Usuario> o;
 
         try {
-            o = service.crearUsuario(usuario, cursoId);
+            o = service.createUser(usuario, cursoId);
         } catch (FeignException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
@@ -104,7 +108,7 @@ public class CursoController {
         Optional<Usuario> o;
 
         try {
-            o = service.eliminarUsuario(usuario, cursoId);
+            o = service.deleteUser(usuario, cursoId);
         } catch (FeignException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
@@ -121,7 +125,7 @@ public class CursoController {
 
     @DeleteMapping("/eliminar-curso-usuario/{id}")
     public ResponseEntity<?> eliminarCursoUsuarioPorId(@PathVariable Long id) {
-        service.eliminarCursoUsuarioPorId(id);
+        service.deleteCursoUsuarioById(id);
         return ResponseEntity.noContent().build();
     }
 
