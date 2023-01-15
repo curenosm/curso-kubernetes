@@ -37,7 +37,7 @@ jobs:
           chmod +x mvnw
           ./mvnw clean test
       - name: Build docker-compose
-        run: docker-compose up --build
+        run: docker-compose up --build --exit-code-from
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
   run-github-actions-windows:
@@ -68,6 +68,6 @@ jobs:
       - name: Build docker-compose
         run: |
           C:\"Program Files"\Docker\Docker\DockerCli.exe -SwitchDaemon
-          docker-compose up --build
+          docker-compose up --build --exit-code-from
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
