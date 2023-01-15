@@ -39,8 +39,7 @@ jobs:
         run: echo {{ github.event.client_payload.env }}
       - name: List Files
         run: |
-          pwd
-          ls -a
+          Get-Location
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
@@ -51,6 +50,7 @@ jobs:
         run: |
           pwd
           ls -a
+        shell: bash
       - name: Build docker-compose
         run: docker-compose up --build
       - name: Log Greeting Time
