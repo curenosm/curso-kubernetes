@@ -6,6 +6,12 @@ import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Interface which represents the business logic contracts for our microservice
+ *
+ * @version 1.0.0
+ * @author Misael Cureño
+ */
 public interface CursoService {
 
     List<Curso> findAll();

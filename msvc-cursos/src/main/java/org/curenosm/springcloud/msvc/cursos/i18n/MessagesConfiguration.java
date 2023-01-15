@@ -13,6 +13,13 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.util.Locale;
 
+
+/**
+ * Configuration class for internationalization
+ *
+ * @version 1.0.0
+ * @author Misael Cureño
+ */
 @Configuration
 public class MessagesConfiguration implements WebMvcConfigurer {
 

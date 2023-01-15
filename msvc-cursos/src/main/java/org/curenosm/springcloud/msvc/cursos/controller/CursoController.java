@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.*;
 
+
+/**
+ * Controller class that handles all the requests related to the courses
+ *
+ * @version 1.0.0
+ * @author Misael Cureño
+ */
 @RestController
 public class CursoController {
 
@@ -28,6 +35,13 @@ public class CursoController {
         return ResponseEntity.ok(service.findAll());
     }
 
+
+    /**
+     * Interface which Feign uses to generate a client that we can use to interact with
+     * users microservice.
+     *
+     * @param id Identifier of the course
+     */
     @GetMapping("/{id}")
     public ResponseEntity<?> buscar(@PathVariable Long id) {
         Optional<Curso> o = service.buscarPorIdConUsuarios(id);
@@ -38,6 +52,13 @@ public class CursoController {
         return ResponseEntity.notFound().build();
     }
 
+    /**
+     * Interface which Feign uses to generate a client that we can use to interact with
+     * users microservice.
+     *
+     * @param curso Course to create
+     * @param result Injected object to help with validation
+     */
     @PostMapping
     public ResponseEntity<?> crear(@Valid @RequestBody Curso curso, BindingResult result) {
         if (result.hasErrors())
@@ -50,10 +71,18 @@ public class CursoController {
                 .body(cursoDB);
     }
 
+    /**
+     * Interface which Feign uses to generate a client that we can use to interact with
+     * users microservice.
+     *
+     * @param id Identifier of the course
+     * @param curso Information to save of the course
+     * @param result  Injected object to help with validation
+     */
     @PutMapping("/{id}")
-    public ResponseEntity<?> editar(@Valid @RequestBody Curso curso,
-                                    BindingResult result,
-                                    @PathVariable Long id) {
+    public ResponseEntity<?> editar(@PathVariable Long id,
+                                    @Valid @RequestBody Curso curso,
+                                    BindingResult result) {
         if (result.hasErrors())
             return validar(result);
 
@@ -68,6 +97,12 @@ public class CursoController {
         return ResponseEntity.notFound().build();
     }
 
+
+    /**
+     * Handler to delete a course by its id
+     *
+     * @param id Identifier of the course
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Long id) {
         Optional<Curso> o = service.findById(id);
@@ -80,6 +115,13 @@ public class CursoController {
         return ResponseEntity.notFound().build();
     }
 
+
+    /**
+     * Handler to assign a User to a course
+     *
+     * @param usuario User to be assigned to a given course.
+     * @param cursoId Information to save of the course.
+     */
     @PutMapping("/asignar-usuario/{cursoId}")
     public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario,
                                           @PathVariable Long cursoId) {
@@ -102,6 +144,13 @@ public class CursoController {
     }
 
 
+
+    /**
+     * Handler to delete a user
+     *
+     * @param usuario User to be assigned to a given course.
+     * @param cursoId Information to save of the course
+     */
     @DeleteMapping("/eliminar-usuario/{cursoId}")
     public ResponseEntity<?> eliminarUsuario(@RequestBody Usuario usuario,
                                              @PathVariable Long cursoId) {
@@ -123,12 +172,23 @@ public class CursoController {
         return ResponseEntity.notFound().build();
     }
 
+    /**
+     * Handler to remove a user from a given course
+     *
+     * @param id Identifier of the course to be deleted
+     */
     @DeleteMapping("/eliminar-curso-usuario/{id}")
     public ResponseEntity<?> eliminarCursoUsuarioPorId(@PathVariable Long id) {
         service.deleteCursoUsuarioById(id);
         return ResponseEntity.noContent().build();
     }
 
+
+    /**
+     * Method to validate properly
+     *
+     * @param result Object to inject for validation purposes
+     */
     private ResponseEntity<Map<String, String>> validar(BindingResult result) {
         Map<String, String> errores = new HashMap<>();
 

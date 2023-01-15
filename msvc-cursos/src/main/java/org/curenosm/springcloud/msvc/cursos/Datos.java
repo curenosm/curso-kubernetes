@@ -7,6 +7,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * Data class which is used for testing purposes only
+ *
+ * @version 1.0.0
+ * @author Misael Cureño
+ */
 public class Datos {
 
     public static final Curso CURSO = new Curso(1L, "Ciencias", new ArrayList<>(), new ArrayList<>());

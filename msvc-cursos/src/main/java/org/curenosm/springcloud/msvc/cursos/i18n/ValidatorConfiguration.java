@@ -6,6 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+/**
+ * Configuration class to set the messages source
+ *
+ * @version 1.0.0
+ * @author Misael Cureño
+ */
 @Configuration
 public class ValidatorConfiguration {
 

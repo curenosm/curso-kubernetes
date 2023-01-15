@@ -5,6 +5,13 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
+/**
+ * Join table to establish the relationship between cursos and usuarios tables.
+ *
+ * @version 1.0.0
+ * @author Misael Cureño
+ */
 @Getter
 @Setter
 @Entity

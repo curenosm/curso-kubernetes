@@ -5,6 +5,12 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of the messages service interface to interact with i18n messages
+ *
+ * @version 1.0.0
+ * @author Misael Cureño
+ */
 @Component
 public class MessagesServiceUtilImpl implements MessagesServiceUtil {
 
