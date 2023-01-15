@@ -4,7 +4,7 @@ on: push
 
 jobs:
   run-github-actions-linux:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: payload
         run: echo {{ github.event.client_payload.env }}
@@ -33,7 +33,7 @@ jobs:
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
   run-github-actions-windows:
-    runs_on: windows-latest
+    runs-on: windows-latest
     steps:
       - name: payload
         run: echo {{ github.event.client_payload.env }}
