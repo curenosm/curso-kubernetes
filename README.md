@@ -71,6 +71,12 @@ cluster de K8s .
 - `kubectl apply -f .\deployment-usuarios.yaml -f .\svc-usuarios.yaml`
 - `minikube dashboard`
 
+- `mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"`
+- `mvn spring-boot:run -Dspring-boot.run.profiles=dev`
+- `java -jar -Dspring.profiles.active=dev XXX.jar`
+- `java -Dspring.profiles.active=dev -jar app.jar`
+- `java -jar app.jar --spring.profiles.active=dev`
+
 
 ### OBSERVACIONES:
 - Minikube (el cluster de K8s): No tiene acceso a las imagenes que hemos descargado haciendo uso de docker desktop
