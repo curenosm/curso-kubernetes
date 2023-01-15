@@ -31,8 +31,10 @@ jobs:
       - name: Testing Phase
         run: |
           cd msvc-cursos
+          chmod +x mvnw
           ./mvnw clean test
           cd ../msvc-usuarios
+          chmod +x mvnw
           ./mvnw clean test
       - name: Build docker-compose
         run: docker-compose up --build
