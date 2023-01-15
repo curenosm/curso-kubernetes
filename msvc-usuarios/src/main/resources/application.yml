@@ -4,7 +4,7 @@ spring:
     basename: i18n/messages
     encoding: UTF-8
   profiles:
-    active: ${ACTIVE_PROFILE_ENV_VARIABLE:dev}
+    active: ${ACTIVE_PROFILE_ENV_VARIABLE:test}
     # Para vincular los perfiles de maven
     # active: @appProfile@
 

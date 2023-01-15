@@ -28,6 +28,12 @@ jobs:
         uses: actions/hello-world-javascript-action@v1
         with:
           who-to-greet: John
+      - name: Testing Phase
+        run:
+          cd msvc-cursos
+          ./mvnw clean test
+          cd ../msvc-usuarios
+          ./mvnw clean test
       - name: Build docker-compose
         run: docker-compose up --build
       - name: Log Greeting Time
@@ -51,9 +57,15 @@ jobs:
           pwd
           ls -a
         shell: bash
+      - name: Testing Phase
+        run:
+          cd msvc-cursos
+          mvnw.cmd clean test
+          cd ../msvc-usuarios
+          mvnw.cmd clean test
       - name: Build docker-compose
         run: |
-          C:\Program Files\Docker\Docker\DockerCli.exe -SwitchDaemon
+          C:\"Program Files"\Docker\Docker\DockerCli.exe -SwitchDaemon
           docker-compose up --build
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"

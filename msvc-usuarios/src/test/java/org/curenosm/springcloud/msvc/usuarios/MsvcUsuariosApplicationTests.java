@@ -8,6 +8,7 @@ class MsvcUsuariosApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
