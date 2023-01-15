@@ -6,7 +6,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MessagesServiceUtilImpl implements MessageServiceUtil {
+public class MessagesServiceUtilImpl implements MessagesServiceUtil {
 
     @Autowired
     private MessageSource messages;

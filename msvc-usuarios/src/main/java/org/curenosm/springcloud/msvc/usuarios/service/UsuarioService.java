@@ -8,8 +8,11 @@ import java.util.Optional;
 public interface UsuarioService {
 
     List<Usuario> listar();
-    Optional<Usuario>  buscarPorId(Long id);
+
+    Optional<Usuario> buscarPorId(Long id);
+
     Usuario guardar(Usuario usuario);
+
     void eliminar(Long id);
 
     Optional<Usuario> buscarPorEmail(String email);

@@ -1,0 +1,57 @@
+name: Main Workflow
+
+on: push
+
+jobs:
+  run-github-actions-linux:
+    runs_on: ubuntu-latest
+    steps:
+      - name: payload
+        run: echo {{ github.event.client_payload.env }}
+      - name: List Files
+        run: |
+          pwd
+          ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: List Files after Checkout
+        run: |
+          pwd
+          ls -a
+      - name: Simple JS Action
+        id: greet
+        # References an action
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: John
+      - name: Build docker-compose
+        run: docker-compose up --build
+      - name: Log Greeting Time
+        run: echo "${{ steps.greet.outputs.time }}"
+  run-github-actions-windows:
+    runs_on: windows-latest
+    steps:
+      - name: payload
+        run: echo {{ github.event.client_payload.env }}
+      - name: List Files
+        run: |
+          pwd
+          ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: List Files after Checkout
+        run: |
+          pwd
+          ls -a
+      - name: Build docker-compose
+        run: docker-compose up --build
+      - name: Log Greeting Time
+        run: echo "${{ steps.greet.outputs.time }}"

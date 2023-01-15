@@ -25,7 +25,7 @@ public class UsuarioController {
 
     @GetMapping("/crash")
     public void crash() {
-        ((ConfigurableApplicationContext ) context).close();
+        ((ConfigurableApplicationContext) context).close();
     }
 
     @GetMapping("/")
@@ -103,7 +103,6 @@ public class UsuarioController {
         }
 
 
-        
         return ResponseEntity.notFound().build();
     }
 
@@ -116,7 +115,7 @@ public class UsuarioController {
         Map<String, String> errores = new HashMap<>();
 
         result.getFieldErrors().forEach(
-            err -> errores.put(err.getField(), "El campo " + err.getField() + " " + err.getDefaultMessage())
+                err -> errores.put(err.getField(), "El campo " + err.getField() + " " + err.getDefaultMessage())
         );
 
         return ResponseEntity.badRequest().body(errores);

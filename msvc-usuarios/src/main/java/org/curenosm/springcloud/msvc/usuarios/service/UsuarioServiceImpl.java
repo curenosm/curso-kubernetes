@@ -20,13 +20,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     private CursoClienteRest client;
 
     @Override
-    @Transactional(readOnly= true)
+    @Transactional(readOnly = true)
     public List<Usuario> listar() {
         return (List<Usuario>) repository.findAll();
     }
 
     @Override
-    @Transactional(readOnly= true)
+    @Transactional(readOnly = true)
     public Optional<Usuario> buscarPorId(Long id) {
         return repository.findById(id);
     }

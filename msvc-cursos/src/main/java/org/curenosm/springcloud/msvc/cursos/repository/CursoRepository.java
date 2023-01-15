@@ -11,5 +11,4 @@ public interface CursoRepository extends CrudRepository<Curso, Long> {
     void eliminarCursoUsuarioPorId(Long id);
 
 
-
 }

@@ -17,14 +17,14 @@ spec:
         app: mysql8
     spec:
       containers:
-      - image: mysql:8
-        name: mysql8
-        ports:
-        - containerPort: 3306
-        env:
-          - name: MYSQL_ROOT_PASSWORD
-            value: sasa
-          - name: MYSQL_DATABASE
-            value: msvc_usuarios
-        # resources: {}
+        - image: mysql:8
+          name: mysql8
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: sasa
+            - name: MYSQL_DATABASE
+              value: msvc_usuarios
+          # resources: {}
 # status: {}

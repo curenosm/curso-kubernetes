@@ -3,14 +3,14 @@ package org.curenosm.springcloud.msvc.cursos.model.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="cursos_usuarios")
+@Table(name = "cursos_usuarios")
 public class CursoUsuario {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name="usuario_id", unique = true)
+    @Column(name = "usuario_id", unique = true)
     private Long usuarioId;
 
     public Long getId() {

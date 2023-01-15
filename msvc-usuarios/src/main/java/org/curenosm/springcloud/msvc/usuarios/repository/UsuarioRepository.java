@@ -9,7 +9,8 @@ import java.util.Optional;
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
     Optional<Usuario> findByEmail(String email);
 
-    @Query("select u from Usuario u where u.email=?1") // Los parametros empiezan en 1, 2, ...
+    // Los parametros empiezan en 1, 2, ...
+    @Query("select u from Usuario u where u.email=?1")
     Optional<Usuario> buscarPorEmail(String email);
 
     boolean existsByEmail(String email);

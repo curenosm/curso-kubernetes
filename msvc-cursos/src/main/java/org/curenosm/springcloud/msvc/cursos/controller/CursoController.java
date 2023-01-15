@@ -83,12 +83,11 @@ public class CursoController {
 
         try {
             o = service.crearUsuario(usuario, cursoId);
-        }
-        catch (FeignException e) {
+        } catch (FeignException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body(
-                            Collections.singletonMap("mensaje", "No se pudo crear el usuario o error en la comunicacion " + e.getMessage()) );
+                            Collections.singletonMap("mensaje", "No se pudo crear el usuario o error en la comunicacion " + e.getMessage()));
         }
 
         if (o.isPresent()) {
@@ -101,17 +100,16 @@ public class CursoController {
 
     @DeleteMapping("/eliminar-usuario/{cursoId}")
     public ResponseEntity<?> eliminarUsuario(@RequestBody Usuario usuario,
-                                          @PathVariable Long cursoId) {
+                                             @PathVariable Long cursoId) {
         Optional<Usuario> o;
 
         try {
             o = service.eliminarUsuario(usuario, cursoId);
-        }
-        catch (FeignException e) {
+        } catch (FeignException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body(
-                            Collections.singletonMap("mensaje", "No existe el usuario o error en la comunicacion " + e.getMessage()) );
+                            Collections.singletonMap("mensaje", "No existe el usuario o error en la comunicacion " + e.getMessage()));
         }
 
         if (o.isPresent()) {
@@ -131,7 +129,7 @@ public class CursoController {
         Map<String, String> errores = new HashMap<>();
 
         result.getFieldErrors().forEach(err ->
-            errores.put(err.getField(), "El campo " + err.getField() + " " + err.getDefaultMessage())
+                errores.put(err.getField(), "El campo " + err.getField() + " " + err.getDefaultMessage())
         );
 
         return ResponseEntity.badRequest().body(errores);

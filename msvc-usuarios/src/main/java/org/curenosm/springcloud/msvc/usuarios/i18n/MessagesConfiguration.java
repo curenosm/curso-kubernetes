@@ -25,6 +25,7 @@ public class MessagesConfiguration implements WebMvcConfigurer {
 
     /**
      * Method which register an interceptor of the request to add a parameter
+     *
      * @return LocaleChangeInterceptor
      */
     @Bean

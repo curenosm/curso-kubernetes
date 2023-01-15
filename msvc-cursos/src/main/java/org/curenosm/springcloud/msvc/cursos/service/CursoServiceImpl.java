@@ -121,7 +121,7 @@ public class CursoServiceImpl implements CursoService {
                         .stream()
                         .map(CursoUsuario::getUsuarioId)
                         .toList();
-                    // .collect(Collectors.toList())
+                // .collect(Collectors.toList())
 
                 List<Usuario> usuarios = client.obtenerAlumnosPorCurso(ids);
                 curso.setUsuarios(usuarios);
