@@ -1,6 +1,7 @@
 package org.curenosm.springcloud.msvc.cursos.controller;
 
 import feign.FeignException;
+import org.curenosm.springcloud.msvc.cursos.converters.StringToEnumConverterFactory;
 import org.curenosm.springcloud.msvc.cursos.model.Usuario;
 import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 import org.curenosm.springcloud.msvc.cursos.service.CursoService;
