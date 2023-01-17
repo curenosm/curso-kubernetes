@@ -17,8 +17,8 @@ import java.util.Locale;
 /**
  * Configuration class for internationalization
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 @Configuration
 public class MessagesConfiguration implements WebMvcConfigurer {

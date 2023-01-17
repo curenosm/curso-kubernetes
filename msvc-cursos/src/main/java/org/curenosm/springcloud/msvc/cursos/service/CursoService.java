@@ -9,8 +9,8 @@ import java.util.Optional;
 /**
  * Interface which represents the business logic contracts for our microservice
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 public interface CursoService {
 

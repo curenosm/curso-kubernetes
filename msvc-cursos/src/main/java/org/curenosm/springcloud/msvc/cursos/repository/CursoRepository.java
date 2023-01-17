@@ -11,8 +11,8 @@ import java.util.Optional;
 /**
  * Data Access Object to deal with courses
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 public interface CursoRepository extends CrudRepository<Curso, Long> {
     @Modifying

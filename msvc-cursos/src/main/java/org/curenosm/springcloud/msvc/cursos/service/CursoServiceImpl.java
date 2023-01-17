@@ -16,8 +16,8 @@ import java.util.Optional;
 /**
  * Implementation of the CursoService interface to implement the business logic
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 @Service
 @AllArgsConstructor

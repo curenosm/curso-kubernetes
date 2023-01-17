@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
 class PersonForm(
-    @get:NotNull @get:Size(max=64)
+    @get:NotNull @get:Size(max = 64)
     private val name: String,
     @get:Min(0)
     private val age: Int,

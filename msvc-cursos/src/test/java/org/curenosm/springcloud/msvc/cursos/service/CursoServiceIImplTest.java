@@ -1,5 +1,6 @@
 package org.curenosm.springcloud.msvc.cursos.service;
 
+import org.curenosm.springcloud.msvc.cursos.Datos;
 import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 import org.curenosm.springcloud.msvc.cursos.repository.CursoRepository;
 import org.junit.jupiter.api.*;
@@ -16,8 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
-
-import org.curenosm.springcloud.msvc.cursos.Datos;
 
 @ExtendWith({MockitoExtension.class})
 public class CursoServiceIImplTest {
@@ -40,6 +39,11 @@ public class CursoServiceIImplTest {
         System.out.println("Initializing test");
     }
 
+    @AfterAll
+    static void afterAll() {
+        System.out.println("Finishing test class");
+    }
+
     @BeforeEach
     void initMethodTest(TestInfo testInfo, TestReporter testReporter) {
         this.testInfo = testInfo;
@@ -57,7 +61,7 @@ public class CursoServiceIImplTest {
         System.out.println("Ending test method");
     }
 
-//    @Disabled
+    //    @Disabled
     @Tag("dev")
     @Test
     @DisplayName("Probando el metodo para encontrar un producto por su nombre")
@@ -70,12 +74,6 @@ public class CursoServiceIImplTest {
         assertTrue(producto.isPresent());
         assertEquals(1L, producto.orElseThrow().getId());
         assertEquals("Ciencias", producto.get().getNombre());
-    }
-
-
-    @AfterAll
-    static void afterAll() {
-        System.out.println("Finishing test class");
     }
 
 

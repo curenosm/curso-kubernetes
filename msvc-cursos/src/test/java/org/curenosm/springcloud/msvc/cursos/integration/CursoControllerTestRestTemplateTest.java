@@ -33,8 +33,6 @@ public class CursoControllerTestRestTemplateTest {
     private ObjectMapper objectMapper;
 
 
-
-
     @BeforeEach
     void setUp() {
         objectMapper = new ObjectMapper();

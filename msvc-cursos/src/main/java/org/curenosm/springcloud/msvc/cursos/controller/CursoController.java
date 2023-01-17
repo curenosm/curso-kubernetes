@@ -1,7 +1,6 @@
 package org.curenosm.springcloud.msvc.cursos.controller;
 
 import feign.FeignException;
-import org.curenosm.springcloud.msvc.cursos.converters.StringToEnumConverterFactory;
 import org.curenosm.springcloud.msvc.cursos.model.Usuario;
 import org.curenosm.springcloud.msvc.cursos.model.entities.Curso;
 import org.curenosm.springcloud.msvc.cursos.service.CursoService;
@@ -18,8 +17,8 @@ import java.util.*;
 /**
  * Controller class that handles all the requests related to the courses
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 @RestController
 public class CursoController {
@@ -57,7 +56,7 @@ public class CursoController {
      * Interface which Feign uses to generate a client that we can use to interact with
      * users microservice.
      *
-     * @param curso Course to create
+     * @param curso  Course to create
      * @param result Injected object to help with validation
      */
     @PostMapping
@@ -76,9 +75,9 @@ public class CursoController {
      * Interface which Feign uses to generate a client that we can use to interact with
      * users microservice.
      *
-     * @param id Identifier of the course
-     * @param curso Information to save of the course
-     * @param result  Injected object to help with validation
+     * @param id     Identifier of the course
+     * @param curso  Information to save of the course
+     * @param result Injected object to help with validation
      */
     @PutMapping("/{id}")
     public ResponseEntity<?> editar(@PathVariable Long id,
@@ -143,7 +142,6 @@ public class CursoController {
 
         return ResponseEntity.notFound().build();
     }
-
 
 
     /**

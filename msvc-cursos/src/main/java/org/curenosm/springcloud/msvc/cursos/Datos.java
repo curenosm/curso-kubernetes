@@ -11,8 +11,8 @@ import java.util.Optional;
 /**
  * Data class which is used for testing purposes only
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 public class Datos {
 

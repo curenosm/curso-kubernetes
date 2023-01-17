@@ -12,8 +12,8 @@ import java.util.List;
  * Interface which Feign uses to generate a client that we can use to interact with
  * users microservice.
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 @FeignClient(name = "msvc-usuarios", url = "${msvc.usuarios.url}")
 public interface UsuarioClientRest {

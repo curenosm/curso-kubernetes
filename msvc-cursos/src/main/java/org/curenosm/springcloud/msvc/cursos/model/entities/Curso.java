@@ -1,6 +1,9 @@
 package org.curenosm.springcloud.msvc.cursos.model.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import org.curenosm.springcloud.msvc.cursos.model.Usuario;
 
 import javax.persistence.*;
@@ -12,8 +15,8 @@ import java.util.List;
 /**
  * Entity class that models a course in our system
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 @AllArgsConstructor
 @Builder

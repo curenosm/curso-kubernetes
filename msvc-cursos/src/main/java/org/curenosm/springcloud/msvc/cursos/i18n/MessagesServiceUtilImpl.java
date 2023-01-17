@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 /**
  * Implementation of the messages service interface to interact with i18n messages
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 @Component
 public class MessagesServiceUtilImpl implements MessagesServiceUtil {

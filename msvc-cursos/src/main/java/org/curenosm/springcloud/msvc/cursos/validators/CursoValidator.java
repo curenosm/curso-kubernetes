@@ -9,8 +9,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import javax.validation.constraints.NotNull;
-
 @Component
 public class CursoValidator implements Validator {
 
@@ -44,7 +42,7 @@ public class CursoValidator implements Validator {
         try {
             errors.pushNestedPath("usuarios");
 
-            for (Usuario user: course.getUsuarios()) {
+            for (Usuario user : course.getUsuarios()) {
                 ValidationUtils.invokeValidator(this.usuarioValidator, user, errors);
             }
 

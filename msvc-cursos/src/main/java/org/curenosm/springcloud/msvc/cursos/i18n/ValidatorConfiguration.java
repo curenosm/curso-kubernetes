@@ -9,8 +9,8 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 /**
  * Configuration class to set the messages source
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 @Configuration
 public class ValidatorConfiguration {

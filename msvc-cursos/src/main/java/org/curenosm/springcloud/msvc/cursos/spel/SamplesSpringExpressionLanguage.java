@@ -12,7 +12,7 @@ import java.util.List;
 
 // I'm on section 4.1.2 Parser Configuration of Spring Framework documentation
 public class SamplesSpringExpressionLanguage {
-    public static void test () {
+    public static void test() {
         ExpressionParser parser = new SpelExpressionParser();
 
         Expression exp = parser.parseExpression("'Hello World'");

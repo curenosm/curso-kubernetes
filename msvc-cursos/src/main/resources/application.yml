@@ -8,6 +8,14 @@ spring:
     # Para vincular los perfiles de maven
     # active: @appProfile@
 
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+
+
+
 # Para definir diferentes perfiles en un mismo archivo yml,
 # la otra alternativa es tener un archivo properties con la forma
 
@@ -29,11 +37,6 @@ spring:
 #    activate:
 #      on-profile:
 
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: debug
 
 #---
 #

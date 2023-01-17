@@ -7,8 +7,8 @@ import lombok.*;
  * Class that models a user, this is a common class which should not remain since the update in one
  * project should be enough to
  *
- * @version 1.0.0
  * @author Misael Cureño
+ * @version 1.0.0
  */
 @AllArgsConstructor
 @NoArgsConstructor
