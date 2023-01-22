@@ -76,7 +76,8 @@ cluster de K8s .
 - `java -jar -Dspring.profiles.active=dev XXX.jar`
 - `java -Dspring.profiles.active=dev -jar app.jar`
 - `java -jar app.jar --spring.profiles.active=dev`
-
+- `kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default` : Asignamos
+permisos para asegurarnos de que no hay errores al momento que los servicios necesiten acceder a los recursos de kubernetes
 
 ### OBSERVACIONES:
 - Minikube (el cluster de K8s): No tiene acceso a las imagenes que hemos descargado haciendo uso de docker desktop

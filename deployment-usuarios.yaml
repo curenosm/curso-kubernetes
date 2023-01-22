@@ -48,3 +48,37 @@ spec:
                 configMapKeyRef:
                   name: msvc-usuarios
                   key: usuario_url
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health/readiness
+#              port: 8001
+#              scheme: HTTP
+#            initialDelaySeconds: 5
+#            periodSeconds: 20
+#            timeoutSeconds: 10
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health/liveness
+#              port: 8002
+#              scheme: HTTP
+#            initialDelaySeconds: 10
+#            periodSeconds: 30
+#            timeoutSeconds: 10
+          # Si nos pasamos de CPU eventualmente el pod podria reiniciar el contenedor
+#          resources: # Si nos pasamos de memoria el kernel de linux va a hacer un kill del proceso, se elimina el pod
+#            # Garantizados
+#            requests:
+#              memory: "512Mi"
+#              cpu: "400m" # milicore
+#            # Podria llegar a tener
+#            limits:
+#              memory: "800Mi"
+#              cpu: "500m"

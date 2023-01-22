@@ -5,6 +5,7 @@ import org.curenosm.springcloud.msvc.usuarios.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -17,13 +18,16 @@ import java.util.*;
 // @RequestMapping("/api")
 public class UsuarioController {
 
+    private final Environment env;
+
     private final UsuarioService service;
     private final ApplicationContext context;
 
     @Autowired
-    public UsuarioController(UsuarioService service, ApplicationContext context) {
+    public UsuarioController(UsuarioService service, ApplicationContext context, Environment env) {
         this.service = service;
         this.context = context;
+        this.env = env;
     }
 
     @GetMapping("/crash")
@@ -32,8 +36,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/")
-    public Map<String, List<Usuario>> listar() {
-        return Collections.singletonMap("usuarios", service.findAll());
+    public Map<String, Object> listar() {
+
+        Map<String, Object> body = new HashMap<>();
+        body.put("users", service.findAll());
+        body.put("pod_info", env.getProperty("POD_NAME") + ": " + env.getProperty("POD_IP"));
+        body.put("texto", env.getProperty("config.texto"));
+//        return Collections.singletonMap("users", service.findAll());
+        return body;
     }
 
     @GetMapping("/{id}")
@@ -123,5 +133,6 @@ public class UsuarioController {
 
         return ResponseEntity.badRequest().body(errores);
     }
+
 
 }
