@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 
 # Por defecto se crean todos los servicios en la misma red, entonces no hay necesidad de especificar
 # explicitamente la red que comparten
@@ -22,7 +22,7 @@ services:
     container_name: postgres14
     image: postgres:14-alpine
     ports:
-      - "5433:5432"
+      - "5532:5432"
     environment:
       - POSTGRES_PASSWORD=sasa
       - POSTGRES_DB=msvc_cursos

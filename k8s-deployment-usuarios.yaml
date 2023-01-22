@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: msvc-usuarios
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: msvc-usuarios
@@ -47,7 +47,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: msvc-usuarios
-                  key: usuario_url
+                  key: curso_url
             - name: POD_NAME
               valueFrom:
                 fieldRef:

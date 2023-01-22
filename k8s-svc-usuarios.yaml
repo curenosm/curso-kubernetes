@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: msvc-usuarios
 spec:
+  type: LoadBalancer
+  selector:
+    app: msvc-usuarios
   ports:
     - port: 8001
       protocol: TCP
       targetPort: 8001
-    selector:
-      app: msvc-usuarios
-    type: LoadBalancer
