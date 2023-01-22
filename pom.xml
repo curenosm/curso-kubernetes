@@ -19,6 +19,7 @@
     <modules>
         <module>msvc-usuarios</module>
         <module>msvc-cursos</module>
+        <module>msvc-gateway</module>
     </modules>
 
     <properties>
@@ -38,10 +39,13 @@
 
         <msvc-cursos.version>1.0-SNAPSHOT</msvc-cursos.version>
         <msvc-usuarios.version>1.0-SNAPSHOT</msvc-usuarios.version>
+        <msvc-gateway.version>1.0-SNAPSHOT</msvc-gateway.version>
+
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
             <!-- Microservices -->
             <dependency>
                 <groupId>org.curenosm.springcloud</groupId>
@@ -52,6 +56,11 @@
                 <groupId>org.curenosm.springcloud</groupId>
                 <artifactId>msvc-usuarios</artifactId>
                 <version>${msvc-usuarios.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.curenosm.springcloud</groupId>
+                <artifactId>msvc-gateway</artifactId>
+                <version>${msvc-gateway.version}</version>
             </dependency>
 
             <!-- For JSON and String utilities-->
