@@ -2,6 +2,17 @@ ARG MSVC_NAME=msvc-gateway
 
 FROM openjdk:17-jdk-alpine as builder
 
+# For security reasons running as non root user
+RUN addgroup demogroup; adduser  --ingroup demogroup --disabled-password demo
+USER demo
+
+WORKDIR /app
+COPY ./pom.xml /app
+COPY ./.mvn ./.mvn
+COPY ./mvnw .
+# RUN ./mvnw install --non-recursive
+RUN ./mvnw dependency:go-offline --non-recursive
+
 ARG MSVC_NAME
 
 WORKDIR /app/$MSVC_NAME
