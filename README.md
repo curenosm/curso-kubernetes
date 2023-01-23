@@ -79,6 +79,10 @@ cluster de K8s .
 - `kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default` : Asignamos
 permisos para asegurarnos de que no hay errores al momento que los servicios necesiten acceder a los recursos de kubernetes
 
+- `aws configure`
+- `aws eks --region us-east-1 update-kubeconfig --name <nombre_cluster_aws>`
+- 
+
 ### OBSERVACIONES:
 - Minikube (el cluster de K8s): No tiene acceso a las imagenes que hemos descargado haciendo uso de docker desktop
 lo que significa que además de tener que descargar las imagenes de mysql por ejemplo, no tendrá acceso a las
