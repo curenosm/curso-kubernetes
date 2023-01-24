@@ -17,6 +17,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>msvc-auth</module>
         <module>msvc-usuarios</module>
         <module>msvc-cursos</module>
         <module>msvc-gateway</module>

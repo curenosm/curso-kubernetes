@@ -12,3 +12,11 @@ spec:
   hostPath:
     path: /var/lib/postgresql/data
     type: DirectoryOrCreate
+
+#    For EKS deployment on AWS
+#  storageClassName: ""
+#  accessModes:
+#    - ReadWriteMany
+#  csi:
+#    driver: efs.csi.aws.com
+#    volumeHandle: fs-identificador_unico

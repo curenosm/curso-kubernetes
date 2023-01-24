@@ -81,7 +81,7 @@ permisos para asegurarnos de que no hay errores al momento que los servicios nec
 
 - `aws configure`
 - `aws eks --region us-east-1 update-kubeconfig --name <nombre_cluster_aws>`
-- 
+- `kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default`
 
 ### OBSERVACIONES:
 - Minikube (el cluster de K8s): No tiene acceso a las imagenes que hemos descargado haciendo uso de docker desktop
