@@ -1,4 +1,4 @@
-package org.curenosm.msvc.msvcauth;
+package org.curenosm.springcloud.msvc.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

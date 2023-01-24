@@ -1,4 +1,4 @@
-package org.curenosm.msvc.msvcauth;
+package org.curenosm.springcloud.msvc.auth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
