@@ -124,6 +124,17 @@ public class UsuarioController {
         return ResponseEntity.ok(service.findAllByIds(ids));
     }
 
+
+    /**
+     * Handler that according to the authorization code returns it to the view
+     * @param code
+     * @return
+     */
+    @GetMapping("/authorized")
+    public Map<String, Object> authorized(@RequestParam String code) {
+        return Collections.singletonMap("code", code);
+    }
+
     private ResponseEntity<Map<String, String>> validar(BindingResult result) {
         Map<String, String> errores = new HashMap<>();
 
