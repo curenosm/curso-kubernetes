@@ -1,7 +1,8 @@
 #!/bin/bash
 kubectl delete -f ./k8s/configmap.yaml
-kubectl delete -f ./k8s/gateway.yaml
 kubectl delete -f ./k8s/secret.yaml
+kubectl delete -f ./k8s/auth.yaml
+kubectl delete -f ./k8s/gateway.yaml
 kubectl delete -f ./k8s/deployment-mysql.yaml
 kubectl delete -f ./k8s/deployment-postgres.yaml
 kubectl delete -f ./k8s/deployment-cursos.yaml

@@ -8,6 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,12 +23,17 @@ public class UsuarioController {
 
     private final UsuarioService service;
     private final ApplicationContext context;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsuarioController(UsuarioService service, ApplicationContext context, Environment env) {
+    public UsuarioController(UsuarioService service,
+                             ApplicationContext context,
+                             Environment env,
+                             BCryptPasswordEncoder passwordEncoder) {
         this.service = service;
         this.context = context;
         this.env = env;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/crash")
@@ -69,6 +75,7 @@ public class UsuarioController {
                     Collections.singletonMap("mensaje", "Ya existe un usuario con ese correo electrónico!")
             );
 
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(service.save(usuario));
@@ -89,7 +96,7 @@ public class UsuarioController {
 
             usuarioDb.setNombre(usuario.getNombre());
             usuarioDb.setEmail(usuario.getEmail());
-            usuarioDb.setPassword(usuario.getPassword());
+            usuarioDb.setPassword(passwordEncoder.encode(usuario.getPassword()));
 
             if (!usuario.getEmail().equalsIgnoreCase(usuarioDb.getEmail())
                     && service.findByEmail(usuario.getEmail()).isPresent())
@@ -143,6 +150,17 @@ public class UsuarioController {
         );
 
         return ResponseEntity.badRequest().body(errores);
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity<?> loginByEmail(@RequestParam(name = "email") String email) {
+        Optional<Usuario> o = service.findByEmail(email);
+
+        if (o.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(o.get());
+
     }
 
 

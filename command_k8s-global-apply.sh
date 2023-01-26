@@ -1,7 +1,8 @@
 #!/bin/bash
 kubectl apply -f ./k8s/configmap.yaml
-kubectl apply -f ./k8s/gateway.yaml
 kubectl apply -f ./k8s/secret.yaml
+kubectl apply -f ./k8s/auth.yaml
+kubectl apply -f ./k8s/gateway.yaml
 kubectl apply -f ./k8s/pv-mysql.yaml
 kubectl apply -f ./k8s/pv-postgres.yaml
 kubectl apply -f ./k8s/pvc-mysql.yaml
