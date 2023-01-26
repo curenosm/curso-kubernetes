@@ -120,7 +120,7 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Curso> buscarPorIdConUsuarios(Long id) {
+    public Optional<Curso> buscarPorIdConUsuarios(Long id, String token) {
         Optional<Curso> o = repository.findById(id);
 
         if (o.isPresent()) {
@@ -133,7 +133,7 @@ public class CursoServiceImpl implements CursoService {
                         .toList();
                 // .collect(Collectors.toList())
 
-                List<Usuario> usuarios = client.obtenerAlumnosPorCurso(ids);
+                List<Usuario> usuarios = client.obtenerAlumnosPorCurso(ids, token);
                 curso.setUsuarios(usuarios);
 
             }

@@ -21,19 +21,21 @@ import java.util.Collections;
 @Service
 public class UsuarioService implements UserDetailsService {
 
-    private final WebClient client;
+    private final WebClient.Builder client;
 //    private static final Logger logger = LoggerFactory.getLogger(UsuarioService.class);
 
     @Autowired
-    public UsuarioService(WebClient client) {
+    public UsuarioService(WebClient.Builder client) {
         this.client = client;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         try {
-            Usuario usuario = client.get()
-                    .uri("http://msvc-usuarios:", uri -> uri.queryParam("email", email).build())
+            Usuario usuario = client
+                    .build()
+                    .get()
+                    .uri("http://msvc-usuarios/login", uri -> uri.queryParam("email", email).build())
                     .accept(MediaType.APPLICATION_JSON)
                     .retrieve()
                     .bodyToMono(Usuario.class)

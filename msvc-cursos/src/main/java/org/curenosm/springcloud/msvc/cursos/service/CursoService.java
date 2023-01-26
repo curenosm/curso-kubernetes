@@ -16,7 +16,7 @@ public interface CursoService {
 
     List<Curso> findAll();
 
-    Optional<Curso> buscarPorIdConUsuarios(Long id);
+    Optional<Curso> buscarPorIdConUsuarios(Long id, String token);
 
     Optional<Curso> findById(Long id);
 

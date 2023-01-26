@@ -43,8 +43,9 @@ public class CursoController {
      * @param id Identifier of the course
      */
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscar(@PathVariable Long id) {
-        Optional<Curso> o = service.buscarPorIdConUsuarios(id);
+    public ResponseEntity<?> buscar(@PathVariable Long id,
+                                    @RequestHeader(value = "Authorization", required = true) String token) {
+        Optional<Curso> o = service.buscarPorIdConUsuarios(id, token);
 
         if (o.isPresent())
             return ResponseEntity.ok(o.get());
