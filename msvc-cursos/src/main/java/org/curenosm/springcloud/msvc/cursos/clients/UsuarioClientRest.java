@@ -20,10 +20,12 @@ import java.util.List;
 public interface UsuarioClientRest {
 
     @GetMapping("/{id}")
-    Usuario buscar(@PathVariable Long id);
+    Usuario buscar(@PathVariable Long id,
+                   @RequestHeader(value = "Authorization", required = true) String token);
 
     @PostMapping("/")
-    Usuario crear(@RequestBody Usuario usuario);
+    Usuario crear(@RequestBody Usuario usuario,
+                  @RequestHeader(value = "Authorization", required = true) String token);
 
     @GetMapping("/usuarios-curso")
     List<Usuario> obtenerAlumnosPorCurso(@RequestParam Iterable<Long> ids,

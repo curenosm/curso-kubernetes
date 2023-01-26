@@ -59,11 +59,11 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     @Transactional
-    public Optional<Usuario> assignUser(Usuario usuario, Long cursoId) {
+    public Optional<Usuario> assignUser(Usuario usuario, Long cursoId, String token) {
         Optional<Curso> o = repository.findById(cursoId);
 
         if (o.isPresent()) {
-            Usuario usuarioMsvc = client.buscar(usuario.getId());
+            Usuario usuarioMsvc = client.buscar(usuario.getId(), token);
 
             Curso curso = o.get();
             CursoUsuario cursoUsuario = new CursoUsuario();
@@ -79,12 +79,12 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     @Transactional
-    public Optional<Usuario> createUser(Usuario usuario, Long cursoId) {
+    public Optional<Usuario> createUser(Usuario usuario, Long cursoId, String token) {
 
         Optional<Curso> o = repository.findById(cursoId);
 
         if (o.isPresent()) {
-            Usuario usuarioNuevoMsvc = client.crear(usuario);
+            Usuario usuarioNuevoMsvc = client.crear(usuario, token);
 
             Curso curso = o.get();
             CursoUsuario cursoUsuario = new CursoUsuario();
@@ -100,11 +100,11 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     @Transactional
-    public Optional<Usuario> deleteUser(Usuario usuario, Long cursoId) {
+    public Optional<Usuario> deleteUser(Usuario usuario, Long cursoId, String token) {
         Optional<Curso> o = repository.findById(cursoId);
 
         if (o.isPresent()) {
-            Usuario usuarioMsvc = client.buscar(usuario.getId());
+            Usuario usuarioMsvc = client.buscar(usuario.getId(), token);
 
             Curso curso = o.get();
             CursoUsuario cursoUsuario = new CursoUsuario();

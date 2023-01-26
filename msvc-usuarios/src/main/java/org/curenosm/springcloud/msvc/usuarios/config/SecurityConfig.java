@@ -31,6 +31,7 @@ public class SecurityConfig {
                 .and()
                 .oauth2Login(oauth2Login -> oauth2Login.loginPage("/oauth2/authorization/msvc-usuarios-client"))
                 .oauth2Client(withDefaults())
+                .csrf().disable()
                 .oauth2ResourceServer().jwt()
         ;
 

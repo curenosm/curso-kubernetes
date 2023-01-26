@@ -31,7 +31,7 @@ public class CursoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Curso>> listar() {
+    public ResponseEntity<List<Curso>> listar(@RequestHeader(value = "Authorization", required = true) String token) {
         return ResponseEntity.ok(service.findAll());
     }
 
@@ -61,7 +61,9 @@ public class CursoController {
      * @param result Injected object to help with validation
      */
     @PostMapping
-    public ResponseEntity<?> crear(@Valid @RequestBody Curso curso, BindingResult result) {
+    public ResponseEntity<?> crear(@Valid @RequestBody Curso curso,
+                                   BindingResult result,
+                                   @RequestHeader(value = "Authorization", required = true) String token) {
         if (result.hasErrors())
             return validar(result);
 
@@ -83,6 +85,7 @@ public class CursoController {
     @PutMapping("/{id}")
     public ResponseEntity<?> editar(@PathVariable Long id,
                                     @Valid @RequestBody Curso curso,
+                                    @RequestHeader(value = "Authorization", required = true) String token,
                                     BindingResult result) {
         if (result.hasErrors())
             return validar(result);
@@ -105,7 +108,8 @@ public class CursoController {
      * @param id Identifier of the course
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminar(@PathVariable Long id) {
+    public ResponseEntity<?> eliminar(@PathVariable Long id,
+                                      @RequestHeader(value = "Authorization", required = true) String token) {
         Optional<Curso> o = service.findById(id);
 
         if (o.isPresent()) {
@@ -125,11 +129,12 @@ public class CursoController {
      */
     @PutMapping("/asignar-usuario/{cursoId}")
     public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario,
-                                          @PathVariable Long cursoId) {
+                                          @PathVariable Long cursoId,
+                                          @RequestHeader(value = "Authorization", required = true) String token) {
         Optional<Usuario> o;
 
         try {
-            o = service.createUser(usuario, cursoId);
+            o = service.createUser(usuario, cursoId, token);
         } catch (FeignException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
@@ -153,11 +158,12 @@ public class CursoController {
      */
     @DeleteMapping("/eliminar-usuario/{cursoId}")
     public ResponseEntity<?> eliminarUsuario(@RequestBody Usuario usuario,
-                                             @PathVariable Long cursoId) {
+                                             @PathVariable Long cursoId,
+                                             @RequestHeader(value = "Authorization", required = true) String token) {
         Optional<Usuario> o;
 
         try {
-            o = service.deleteUser(usuario, cursoId);
+            o = service.deleteUser(usuario, cursoId, token);
         } catch (FeignException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
